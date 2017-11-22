@@ -84,6 +84,7 @@ fgnc () { sudo /usr/bin/find / -name '*'"$@"'*' ; }
 
 zipf () { zip -r "$1".zip "$1" ; } 
 
+
 # external
 source $HOME/.logsql.sh
 source $HOME/.logoanda.sh

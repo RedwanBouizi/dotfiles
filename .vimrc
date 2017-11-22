@@ -87,7 +87,9 @@ let g:syntastic_quiet_messages={'level': 'errors'}
 
 " YouCompleteMe
 let g:ycm_python_binary_path = 'python'
-let g:ycm_global_ycm_extra_conf=$HOME."/.vim/.ycm_extra_conf.py"
+" compile_commands.json used, add -DCMAKE_EXPORT_COMPILE_COMMANDS=ON when
+" calling cmake
+"let g:ycm_global_ycm_extra_conf=$HOME."/.vim/.ycm_extra_conf.py"
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
 let g:ycm_autoclose_preview_window_after_completion=1
