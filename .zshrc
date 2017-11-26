@@ -1,27 +1,30 @@
 # paths
-export HOME="/Users/redwan"
+export HOME=/Users/redwan
 
-export PATH="/usr/local/sbin"
-export PATH="$PATH:/usr/local/bin"
-export PATH="$PATH:/sbin"
-export PATH="$PATH:/bin"
-export PATH="$PATH:/usr/sbin"
-export PATH="$PATH:/usr/bin"
+export PATH=/usr/local/bin
+export PATH=$PATH:/usr/local/sbin
+export PATH=$PATH:/sbin
+export PATH=$PATH:/bin
+export PATH=$PATH:/usr/sbin
+export PATH=$PATH:/usr/bin
 
 export SHELL=$(which zsh)
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
+
+export PY_PROJECTS=$HOME/Python
+export CPP_PROJECTS=$HOME/C++
 
 # default editor
-export EDITOR='vim'
+export EDITOR="vim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 
 # theme and style
-ZSH_THEME="tjkirch"
+ZSH_THEME='tjkirch'
 zstyle ':completion:*' list-colors'' 
 
 # environment
-export TERM="xterm-256color"
+export TERM='xterm-256color'
 export LANG=en_US.UTF-8
 
 # plugins 
@@ -41,7 +44,6 @@ alias mkdir="mkdir -pv"
 
 alias ..="cd ../"
 alias ...="cd ../../"
-alias .3="cd ../../../"
 
 alias c="clear"
 
@@ -84,6 +86,16 @@ fgnc () { sudo /usr/bin/find / -name '*'"$@"'*' ; }
 
 zipf () { zip -r "$1".zip "$1" ; } 
 
+# Python dev
+loadenv () 
+{
+	if [[ -z "$@" ]]
+	then
+		source $PWD/.env/bin/activate ;
+	else
+		source $HOME/Python/$@/.env/bin/activate ;	
+	fi
+}
 
 # external
 source $HOME/.logsql.sh

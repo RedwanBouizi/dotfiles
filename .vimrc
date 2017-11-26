@@ -9,10 +9,6 @@ set termencoding=utf-8
 " allow backspace in insert mode
 set backspace=indent,eol,start
 
-" this makes vim act like all other editors, buffers can
-" exist in the background without being in a window.
-set hidden
-
 " command-line completion
 set wildmenu
 set showcmd
@@ -22,38 +18,40 @@ set hlsearch
 set ignorecase
 set smartcase
 
-" indent
+" highlighting on/off when searching
+map <leader>h :set hlsearch!<CR>
+
+" tab indent
 set tabstop=4
+set autoindent
 
 " display metrics
-set relativenumber
 set ruler
 
+" matching braces
 set showmatch
+
+" file format
 set fileformat=unix
-
-set mouse=a
-
-" copy and paste from clipboard
-set clipboard=unnamed
-
-" plugins manager
-call pathogen#infect()
-call pathogen#helptags()
-filetype plugin indent on
 
 " theme and colors
 syntax enable 
 set background=dark
 colorscheme solarized
 
-" column number 100 with color
-set colorcolumn=100
-hi ColorColumn ctermbg=DarkGrey
-
 " cursor
 set cursorline
 hi CursorLine guibg=DarkGrey
+
+" enable folding
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
+
+" Tabs
+nnoremap <C-p> :tabnext<CR>
+nnoremap <C-n> :tabnew<CR>
+nnoremap <C-x> :tabclose<CR>
 
 " move over multiple windows
 nnoremap <C-J> <C-W><C-J>
@@ -61,13 +59,13 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" enable folding
-set foldmethod=indent
-set foldlevel=99
-nnoremap <space> za
 
-" highlighting on/off when searching
-map <leader>h :set hlsearch!<CR>
+"""""""" Plugins """"""""
+
+" plugins manager
+call pathogen#infect()
+call pathogen#helptags()
+filetype plugin on
 
 " Airline
 let g:airline_theme="dark"
@@ -83,7 +81,10 @@ let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=0
 let g:syntastic_check_on_wq=0
-let g:syntastic_quiet_messages={'level': 'errors'}
+let g:syntastic_python_checkers = ['pylint']
+
+" Python - syntax highlighting
+let g:python_highlight_all = 1
 
 " YouCompleteMe
 let g:ycm_python_binary_path = 'python'
@@ -94,16 +95,10 @@ let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
 let g:ycm_autoclose_preview_window_after_completion=1
 
-" UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
-
 " NERDTree
 nnoremap <F1> :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=20
+let g:NERDTreeWinSize=40
 
 " Tagbar
 nnoremap <F2> :TagbarToggle<CR>
-let g:tagbar_width=35
+let g:tagbar_width=40
