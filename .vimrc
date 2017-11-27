@@ -49,8 +49,8 @@ set foldlevel=99
 nnoremap <space> za
 
 " Tabs
-nnoremap <C-p> :tabnext<CR>
 nnoremap <C-n> :tabnew<CR>
+nnoremap <C-p> :tabnext<CR>
 nnoremap <C-x> :tabclose<CR>
 
 " move over multiple windows
@@ -88,8 +88,7 @@ let g:python_highlight_all = 1
 
 " YouCompleteMe
 let g:ycm_python_binary_path = 'python'
-" compile_commands.json used, add -DCMAKE_EXPORT_COMPILE_COMMANDS=ON when
-" calling cmake
+" compile_commands.json used, add -DCMAKE_EXPORT_COMPILE_COMMANDS=ON when calling cmake
 "let g:ycm_global_ycm_extra_conf=$HOME."/.vim/.ycm_extra_conf.py"
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]

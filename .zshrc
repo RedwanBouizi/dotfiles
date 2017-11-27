@@ -69,9 +69,6 @@ alias tma="tmux attach-session -t"
 alias tmc="clear && tmux clear-history"
 alias tmk="tmux kill-session -t"
 
-# user processes listing
-myps() { ps $@ -u $USER -o pid,%cpu,%mem,start,time,bsdtime,command ; }
-
 # local search
 fln () { /usr/bin/find . -name "$@" ; }
 flns () { /usr/bin/find . -name "$@"'*' ; }
@@ -89,9 +86,12 @@ zipf () { zip -r "$1".zip "$1" ; }
 # Python dev
 loadenv () 
 {
-	if [[ -z "$@" ]]
-	then
-		source $PWD/.env/bin/activate ;
+	if [[ -z "$@" ]]; then
+		if [[ -f $PWD/.env/bin/activate ]]; then  
+			source $PWD/.env/bin/activate
+		else
+			echo "Wrong path. Please change directory to a valid Python project."
+		fi
 	else
 		source $HOME/Python/$@/.env/bin/activate ;	
 	fi
