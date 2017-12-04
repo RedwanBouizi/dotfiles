@@ -3,10 +3,10 @@ export HOME=/Users/redwan
 
 export PATH=/usr/local/bin
 export PATH=$PATH:/usr/local/sbin
-export PATH=$PATH:/sbin
-export PATH=$PATH:/bin
-export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/usr/bin
+export PATH=$PATH:/usr/sbin
+export PATH=$PATH:/bin
+export PATH=$PATH:/sbin
 
 export SHELL=$(which zsh)
 export ZSH=$HOME/.oh-my-zsh
@@ -31,9 +31,6 @@ export LANG=en_US.UTF-8
 plugins=(history history-substring-search git brew osx zsh-syntax-highlighting colored-man-pages)
 source $ZSH/oh-my-zsh.sh
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # aliases
 alias la="ls -a"
 alias ll="ls -lArth"
@@ -49,8 +46,6 @@ alias c="clear"
 
 alias netCons="lsof -i"
 alias cleanDS="sudo find . -type f -name '*.DS_Store' -ls -delete"
-
-alias ttop="top -R -F -s 5 -o rsize"
 
 # zsh
 alias zshrc="vim $HOME/.zshrc"
@@ -81,9 +76,7 @@ fgns () { sudo /usr/bin/find / -name "$@"'*' ; }
 fgne () { sudo /usr/bin/find / -name '*'"$@" ; }
 fgnc () { sudo /usr/bin/find / -name '*'"$@"'*' ; }
 
-zipf () { zip -r "$1".zip "$1" ; } 
-
-# Python dev
+# load python virtual environment
 loadenv () 
 {
 	if [[ -z "$@" ]]; then
@@ -116,3 +109,14 @@ then
 		tmux attach-session -t "$ID"
 	fi
 fi
+
+# pip zsh completion
+function _pip_completion {
+  local words cword
+  read -Ac words
+  read -cn cword
+  reply=( $( COMP_WORDS="$words[*]" \
+             COMP_CWORD=$(( cword-1 )) \
+             PIP_AUTO_COMPLETE=1 $words[1] ) )
+}
+compctl -K _pip_completion pip
