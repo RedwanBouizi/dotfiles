@@ -70,8 +70,18 @@ nnoremap <C-H> <C-W><C-H>
 """""""" Plugins """"""""
 
 " plugins manager
-call pathogen#infect()
-call pathogen#helptags()
+call plug#begin()
+Plug '~/.vim/bundle/vim-surround'
+Plug '~/.vim/bundle/nerdtree'
+Plug '~/.vim/bundle/syntastic'
+Plug '~/.vim/bundle/tagbar'
+Plug '~/.vim/bundle/tmuxline.vim'
+Plug '~/.vim/bundle/vim-airline'
+Plug '~/.vim/bundle/python-syntax'
+Plug '~/.vim/bundle/nerdcommenter'
+Plug '~/.vim/bundle/vim-cpp-enhanced-highlight'
+Plug '~/.vim/bundle/YouCompleteMe'
+call plug#end()
 filetype plugin indent on
 
 " Python syntax highlighting
