@@ -32,7 +32,6 @@ plugins=(history history-substring-search git brew osx zsh-syntax-highlighting c
 source $ZSH/oh-my-zsh.sh
 
 # aliases
-alias la="ls -a"
 alias ll="ls -lArth"
 
 alias cp="cp -iv"
@@ -76,20 +75,6 @@ fgns () { sudo /usr/bin/find / -name "$@"'*' ; }
 fgne () { sudo /usr/bin/find / -name '*'"$@" ; }
 fgnc () { sudo /usr/bin/find / -name '*'"$@"'*' ; }
 
-# load python virtual environment
-loadenv () 
-{
-	if [[ -z "$@" ]]; then
-		if [[ -f $PWD/.env/bin/activate ]]; then  
-			source $PWD/.env/bin/activate
-		else
-			echo "Wrong path. Please change directory to a valid Python project."
-		fi
-	else
-		source $HOME/Python/$@/.env/bin/activate ;	
-	fi
-}
-
 # external
 source $HOME/.logsql.sh
 source $HOME/.logoanda.sh
@@ -98,7 +83,7 @@ source $HOME/.logoanda.sh
 export CLICOLOR=1
 export LSCOLORS="gxfxcxdxbxegedabagacad"
 
-# autostart a tmux session if does not exit
+# autostart a tmux session if does not exist
 if [[ -z "$TMUX" ]]
 then	
 	ID="`tmux ls | grep -vm1 attached | cut -d: -f1`"
