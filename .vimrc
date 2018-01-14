@@ -1,19 +1,25 @@
 " Vi-free
 set nocompatible
 
-" encoding
+" Encoding
 set encoding=utf-8
 set fenc=utf-8
 set termencoding=utf-8
 
-" allow backspace in insert mode
+" Allow backspace in insert mode
 set backspace=indent,eol,start
 
-" command-line completion
+" Ext ignored
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
+
+" Command-line completion
 set wildmenu
 set showcmd
 
-" buffers
+" Copy and paste from multiple soucres
+set clipboard=unnamed
+
+" Buffers
 set hidden
 
 " Disable arrow keys
@@ -22,20 +28,22 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-" display metrics
+" Display metrics
 set ruler
+set tw=80
+set colorcolumn=80
 
-" matching braces
+" Matching braces
 set showmatch
 
-" searching
+" Searching
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 map <leader>h :set hlsearch!<CR>
 
-" editing
+" Editing
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -43,20 +51,20 @@ set expandtab
 set autoindent
 set smartindent
 set fileformat=unix
-set textwidth=80
 
+" Historic
 set history=1000
 set undolevels=1000
 
-" theme and colors
+" Theme and colors
 syntax on
 set background=dark
 colorscheme jellybeans
 
-" cursor
+" Cursor
 set cursorline
 
-" enable folding with space key
+" Enable folding with space key
 set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
@@ -67,7 +75,11 @@ nnoremap <C-x> :tabclose<CR>
 nnoremap <C-m> :tabnext<CR>
 nnoremap <C-n> :tabprevious<CR>
 
-" move over multiple windows
+" Split location
+set splitbelow
+set splitright
+
+" Move over multiple windows
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -75,7 +87,7 @@ nnoremap <C-H> <C-W><C-H>
 
 """""""" Plugins """"""""
 
-" plugins manager
+" Plugins manager
 call plug#begin('~/.vim/plugged')
     Plug 'edkolev/tmuxline.vim'
     Plug 'bling/vim-airline'
@@ -116,6 +128,8 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=0
 let g:syntastic_check_on_wq=0
 let g:syntastic_python_checkers=['pylint']
+let g:syntastic_quiet_messages={'level': 'warnings'}
+let g:syntastic_mode_map={ 'mode': 'passive' }
 
 " NERDTree
 nnoremap <F1> :NERDTreeToggle<CR>
@@ -143,3 +157,7 @@ let g:ycm_complete_in_comments=1
 let g:ycm_complete_in_strings=1 
 nnoremap <F5> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <F6> :YcmCompleter GoToReferences<CR>
+highlight Pmenu ctermbg=blue
+
+" Cscope
+"set cscopequickfix=s+,c+,d+,i+,t+,e+,a+
