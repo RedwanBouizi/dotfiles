@@ -22,24 +22,17 @@ set clipboard=unnamed
 " Buffers
 set hidden
 
-" Disable arrow keys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-
 " Display metrics
 set ruler
 set tw=80
 set colorcolumn=80
+set cursorline
 
 " Matching braces
 set showmatch
 
 " Searching
 set hlsearch
-set incsearch
-set ignorecase
 set smartcase
 map <leader>h :set hlsearch!<CR>
 
@@ -60,9 +53,6 @@ set undolevels=1000
 syntax on
 set background=dark
 colorscheme jellybeans
-
-" Cursor
-set cursorline
 
 " Enable folding with space key
 set foldmethod=indent
@@ -85,7 +75,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-"""""""" Plugins """"""""
 
 " Plugins manager
 call plug#begin('~/.vim/plugged')
@@ -98,9 +87,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'ddollar/nerdcommenter'
     Plug 'valloric/youcompleteme'
     Plug 'scrooloose/syntastic'
-    Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'vim-python/python-syntax'
     Plug 'octol/vim-cpp-enhanced-highlight'
+    Plug 'tpope/vim-fugitive'
 call plug#end()
 filetype plugin indent on
 
@@ -129,16 +118,16 @@ let g:syntastic_check_on_open=0
 let g:syntastic_check_on_wq=0
 let g:syntastic_python_checkers=['pylint']
 let g:syntastic_quiet_messages={'level': 'warnings'}
-let g:syntastic_mode_map={ 'mode': 'passive' }
+let g:syntastic_mode_map={'mode': 'passive'}
 
 " NERDTree
 nnoremap <F1> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$']
-let g:NERDTreeWinSize=40
+let g:NERDTreeWinSize=30
 
 " Tagbar
 nnoremap <F2> :TagbarToggle<CR>
-let g:tagbar_width=40
+let g:tagbar_width=30
 
 " Pasting without autoindenting
 set pastetoggle=<F3>
@@ -147,17 +136,19 @@ set pastetoggle=<F3>
 nnoremap <F4> :execute " grep -srnw --binary-files=without-match --exclude-dir=.git --exclude=tags . -e " . expand("<cword>") . " " <bar> cwindow<CR>
 
 " YouCompleteMe
-" compile_commands.json used, add -DCMAKE_EXPORT_COMPILE_COMMANDS=ON when calling cmake
+" compile_commands.json used, you must add
+" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON when calling cmake
+" This file tells YCM how to compile your C/C++ Project
 let g:ycm_python_binary_path='python'
-let g:ycm_autoclose_preview_window_after_insertion=1
+let g:ycm_autoclose_preview_window_after_insertion=0
 let g:ycm_collect_identifiers_from_tags_files=1
-let g:ycm_cache_omnifunc=0
+"let g:ycm_cache_omnifunc=0
 let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_complete_in_comments=1
 let g:ycm_complete_in_strings=1 
 nnoremap <F5> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <F6> :YcmCompleter GoToReferences<CR>
-highlight Pmenu ctermbg=blue
+highlight Pmenu ctermfg=white ctermbg=blue
 
 " Cscope
 "set cscopequickfix=s+,c+,d+,i+,t+,e+,a+

@@ -41,8 +41,6 @@ alias mkdir="mkdir -pv"
 alias ..="cd ../"
 alias ...="cd ../../"
 
-alias c="clear"
-
 alias netCons="lsof -i"
 alias cleanDS="sudo find . -type f -name '*.DS_Store' -ls -delete"
 
