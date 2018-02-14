@@ -12,7 +12,7 @@ set termencoding=utf-8
 set backspace=indent,eol,start
 
 " Ext ignored
-set wildignore+=*.so,*.swp,*.zip,*.pyc,*.out
+set wildignore+=*.so,*.swp,*.zip,*.pyc
 
 " Command-line completion
 set wildmenu
@@ -142,7 +142,7 @@ let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_complete_in_comments=1
 let g:ycm_complete_in_strings=1 
 nnoremap <F5> :YcmCompleter GoTo<CR>
-highlight Pmenu ctermfg=white ctermbg=blue
+highlight Pmenu ctermfg=white ctermbg=black
 
 
 """"""""""""""""""""""""""""""" Ctags & Cscope """"""""""""""""""""""""""""""""

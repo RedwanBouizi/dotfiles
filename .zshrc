@@ -23,6 +23,8 @@ source $ZSH/oh-my-zsh.sh
 
 # aliases
 alias ll="ls -lArth"
+export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+
 alias ..="cd ../"
 alias ...="cd ../../"
 alias clearDS="sudo find . -type f -name '*.DS_Store' -ls -delete"
