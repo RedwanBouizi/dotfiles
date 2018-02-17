@@ -153,13 +153,6 @@ nnoremap <F3> :! ctags -R --fields=+l .<CR><CR>
 " Cscope
 nnoremap <F4> :! cscope -Rb<CR><CR>
 
-" Use both Cscope and Ctags for 'ctrl-]', ':ta', and 'vim -t'
-set cscopetag
-
-" Check cscope for definition of a symbol before checking ctags: set to 1
-" if you want the reverse search order.
-set csto=0
-
 " Add any cscope database in current directory
 if filereadable("cscope.out")
     cscope add cscope.out  

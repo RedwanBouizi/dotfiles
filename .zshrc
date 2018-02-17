@@ -12,8 +12,6 @@ export VISUAL=$EDITOR
 # theme and style
 export ZSH_THEME='tjkirch'
 zstyle ':completion:*' list-colors'' 
-
-# environment
 export TERM='xterm-256color'
 export LANG=en_US.UTF-8
 
