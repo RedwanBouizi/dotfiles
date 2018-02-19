@@ -1,0 +1,5 @@
+[user]
+	name = redwan
+	email = redwanbouizi7@gmail.com
+[core]
+	excludesfile = /Users/redwan/.gitignore_global

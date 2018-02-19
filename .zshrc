@@ -61,3 +61,5 @@ function _pip_completion {
              PIP_AUTO_COMPLETE=1 $words[1] ) )
 }
 compctl -K _pip_completion pip
+
+source  $HOME/.keys.sh
