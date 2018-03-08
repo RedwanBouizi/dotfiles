@@ -3,5 +3,5 @@ cp $HOME/.vimrc\
     $HOME/.tmux.conf\
     $HOME/.gitconfig\
     $HOME/.gitignore_global\
-    $HOME/repo/dotfiles/
+    $HOME/Projects/dotfiles/
 exit 0

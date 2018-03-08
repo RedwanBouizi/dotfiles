@@ -91,7 +91,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree'
     Plug 'majutsushi/tagbar'
     Plug 'ddollar/nerdcommenter'
-    Plug 'valloric/youcompleteme'
+    Plug 'vim-scripts/OmniCppComplete'
+    Plug 'ervandew/supertab'
     Plug 'tpope/vim-fugitive'
 call plug#end()
 filetype plugin indent on
@@ -125,30 +126,34 @@ let g:syntastic_mode_map={'mode': 'passive'}
 
 " NERDTree
 nnoremap <F1> :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.pyc$', '\~$', 'tags', '\.out$', 'compile_commands.json']
+let NERDTreeIgnore=['\.pyc$', '\~$', 'tags', '\.out$']
 let g:NERDTreeWinSize=30
 
 " Tagbar
 nnoremap <F2> :TagbarToggle<CR>
 let g:tagbar_width=30
 
-" YouCompleteMe
-" NOTE: you must add -DCMAKE_EXPORT_COMPILE_COMMANDS=ON when calling cmake,
-" generated compile_commands.json tells YCM how to compile your C/C++ project
-let g:ycm_python_binary_path='python'
-let g:ycm_autoclose_preview_window_after_insertion=0
-let g:ycm_collect_identifiers_from_tags_files=1
-let g:ycm_seed_identifiers_with_syntax=1
-let g:ycm_complete_in_comments=1
-let g:ycm_complete_in_strings=1 
-nnoremap <F5> :YcmCompleter GoTo<CR>
-highlight Pmenu ctermfg=white ctermbg=black
+" Omni completion
+set omnifunc=syntaxcomplete#Complete " override built-in C omnicomplete with C++ OmniCppComplete plugin
+let OmniCpp_GlobalScopeSearch   = 1
+let OmniCpp_DisplayMode         = 1
+let OmniCpp_ShowScopeInAbbr     = 0 "do not show namespace in pop-up
+let OmniCpp_ShowPrototypeInAbbr = 1 "show prototype in pop-up
+let OmniCpp_ShowAccess          = 1 "show access in pop-up
+let OmniCpp_SelectFirstItem     = 1 "select first item in pop-up
+set completeopt=menuone,menu,longest
 
+let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+highlight   Pmenu         ctermfg=0 ctermbg=2
+highlight   PmenuSel      ctermfg=0 ctermbg=7
+highlight   PmenuSbar     ctermfg=7 ctermbg=0
+highlight   PmenuThumb    ctermfg=0 ctermbg=7
 
-""""""""""""""""""""""""""""""" Ctags & Cscope """"""""""""""""""""""""""""""""
-
-" Ctags
-nnoremap <F3> :! ctags -R --fields=+l .<CR><CR>
+function! UpdateTags()
+  execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q ./"
+  echohl StatusLine | echo "C/C++ tag updated" | echohl None
+endfunction
+nnoremap <F3> :call UpdateTags()
 
 " Cscope
 nnoremap <F4> :! cscope -Rb<CR><CR>

@@ -8,7 +8,6 @@
 *.so
 *.dylib
 *.pyc
-compile_commands.json
 build/
 
 # Packages #
