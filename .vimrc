@@ -123,6 +123,9 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_python_checkers=['pylint']
 let g:syntastic_quiet_messages={'level': 'warnings'}
 let g:syntastic_mode_map={'mode': 'passive'}
+let g:syntastic_cpp_checkers=['gcc']
+let g:syntastic_cpp_compiler='gcc'
+let g:syntastic_cpp_compiler_options='-std=c++17'
 
 " NERDTree
 nnoremap <F1> :NERDTreeToggle<CR>
@@ -134,29 +137,30 @@ nnoremap <F2> :TagbarToggle<CR>
 let g:tagbar_width=30
 
 " Omni completion
-set omnifunc=syntaxcomplete#Complete " override built-in C omnicomplete with C++ OmniCppComplete plugin
+set omnifunc=syntaxcomplete#Complete
 let OmniCpp_GlobalScopeSearch   = 1
 let OmniCpp_DisplayMode         = 1
-let OmniCpp_ShowScopeInAbbr     = 0 "do not show namespace in pop-up
-let OmniCpp_ShowPrototypeInAbbr = 1 "show prototype in pop-up
-let OmniCpp_ShowAccess          = 1 "show access in pop-up
-let OmniCpp_SelectFirstItem     = 1 "select first item in pop-up
+let OmniCpp_ShowScopeInAbbr     = 0
+let OmniCpp_ShowPrototypeInAbbr = 1
+let OmniCpp_ShowAccess          = 1
+let OmniCpp_SelectFirstItem     = 1
 set completeopt=menuone,menu,longest
+highlight Pmenu ctermfg=white ctermbg=black
 
+" SuperTab
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
-highlight   Pmenu         ctermfg=0 ctermbg=2
-highlight   PmenuSel      ctermfg=0 ctermbg=7
-highlight   PmenuSbar     ctermfg=7 ctermbg=0
-highlight   PmenuThumb    ctermfg=0 ctermbg=7
 
+" Ctags
 function! UpdateTags()
-  execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q ./"
-  echohl StatusLine | echo "C/C++ tag updated" | echohl None
+    execute ":!rm tags && ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ."
 endfunction
-nnoremap <F3> :call UpdateTags()
+nnoremap <F3> :call UpdateTags()<CR><CR>
 
 " Cscope
-nnoremap <F4> :! cscope -Rb<CR><CR>
+function! UpdateCscope()
+    execute ":!rm cscope.out && cscope -Rb"
+endfunction
+nnoremap <F4> :call UpdateCscope()<CR><CR>
 
 " Add any cscope database in current directory
 if filereadable("cscope.out")
@@ -169,7 +173,7 @@ set cscopeverbose
 "   's'   symbol: find all references to the C symbol under cursor
 "   'g'   global: find global definition(s) of the token under cursor
 "   'c'   calls:  find all calls to the function name under cursor
-"   'd'   called: find functions that function under cursor calls
+"   'd'   called: find functions that the function under cursor calls
 "   't'   text:   find all instances of the text under cursor
 "   'e'   egrep:  egrep search for the word under cursor
 "   'f'   file:   open the filename under cursor

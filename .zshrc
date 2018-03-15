@@ -4,6 +4,9 @@ export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 export SHELL=$(which zsh)
 export ZSH=$HOME/.oh-my-zsh
 
+export CC=/usr/local/bin/gcc
+export CXX=/usr/local/bin/gcc
+
 # default editor
 export EDITOR="vim"
 export USE_EDITOR=$EDITOR
@@ -38,6 +41,9 @@ alias vimrc="vim $HOME/.vimrc"
 # tmux
 alias tmrc="vim $HOME/.tmux.conf"
 alias tmup="tmux source-file $HOME/.tmux.conf"
+
+# library tags
+alias make_cpp_tags="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ."
 
 # autostart a tmux session if does not exist
 if [[ -z "$TMUX" ]]
