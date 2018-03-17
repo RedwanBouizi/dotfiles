@@ -7,6 +7,9 @@ export ZSH=$HOME/.oh-my-zsh
 export CC=/usr/local/bin/gcc
 export CXX=/usr/local/bin/gcc
 
+export CPATH=/usr/local/include
+export LIBRARY_PATH=/usr/local/lib
+
 # default editor
 export EDITOR="vim"
 export USE_EDITOR=$EDITOR

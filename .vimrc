@@ -125,7 +125,7 @@ let g:syntastic_quiet_messages={'level': 'warnings'}
 let g:syntastic_mode_map={'mode': 'passive'}
 let g:syntastic_cpp_checkers=['gcc']
 let g:syntastic_cpp_compiler='gcc'
-let g:syntastic_cpp_compiler_options='-std=c++17'
+let g:syntastic_cpp_compiler_options='-std=c++14'
 
 " NERDTree
 nnoremap <F1> :NERDTreeToggle<CR>
@@ -140,12 +140,15 @@ let g:tagbar_width=30
 set omnifunc=syntaxcomplete#Complete
 let OmniCpp_GlobalScopeSearch   = 1
 let OmniCpp_DisplayMode         = 1
+let OmniCpp_ShowAccess          = 1
 let OmniCpp_ShowScopeInAbbr     = 0
 let OmniCpp_ShowPrototypeInAbbr = 1
-let OmniCpp_ShowAccess          = 1
 let OmniCpp_SelectFirstItem     = 1
-set completeopt=menuone,menu,longest
+set completeopt=menuone,menu,longest,preview
 highlight Pmenu ctermfg=white ctermbg=black
+
+set tags+=~/.vim/tags/std
+set tags+=~/.vim/tags/armadillo
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
