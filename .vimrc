@@ -1,5 +1,3 @@
-"""""""""""""""""""""""""""""""" Basic Config """""""""""""""""""""""""""""""""
-
 " Vi-free
 set nocompatible
 
@@ -79,8 +77,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-
-""""""""""""""""""""""""""""""""""" Plugins """""""""""""""""""""""""""""""""""
 
 " Plugins manager
 call plug#begin('~/.vim/plugged')
