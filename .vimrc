@@ -41,7 +41,7 @@ map <leader>h :set hlsearch!<CR>
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set expandtab     
+set expandtab
 set autoindent
 set smartindent
 set fileformat=unix
@@ -84,6 +84,7 @@ nnoremap <C-H> <C-W><C-H>
 
 " Plugins manager
 call plug#begin('~/.vim/plugged')
+    Plug 'ntpeters/vim-better-whitespace'
     Plug 'vim-python/python-syntax'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'edkolev/tmuxline.vim'
@@ -93,11 +94,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree'
     Plug 'majutsushi/tagbar'
     Plug 'ddollar/nerdcommenter'
-    Plug 'vim-scripts/OmniCppComplete'
-    Plug 'ervandew/supertab'
     Plug 'tpope/vim-fugitive'
 call plug#end()
 filetype plugin indent on
+
+" Vim better whitespace
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
 
 " Python syntax highlighting
 let g:python_highlight_all=1
@@ -131,29 +134,12 @@ let g:syntastic_cpp_compiler_options='-std=c++11'
 
 " NERDTree
 nnoremap <F1> :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.pyc$', 'tags', 'cscope.out', '__pycache__']
+let NERDTreeIgnore=['\.pyc$', '__pycache__', 'tags', 'cscope.out']
 let g:NERDTreeWinSize=30
 
 " Tagbar
 nnoremap <F2> :TagbarToggle<CR>
 let g:tagbar_width=30
-
-" Omni completion
-set omnifunc=syntaxcomplete#Complete
-let OmniCpp_GlobalScopeSearch   = 1
-let OmniCpp_DisplayMode         = 1
-let OmniCpp_ShowAccess          = 1
-let OmniCpp_ShowScopeInAbbr     = 0
-let OmniCpp_ShowPrototypeInAbbr = 1
-let OmniCpp_SelectFirstItem     = 1
-set completeopt=menuone,menu,longest,preview
-highlight Pmenu ctermfg=white ctermbg=black
-
-set tags+=~/.vim/tags/std
-set tags+=~/.vim/tags/armadillo
-
-" SuperTab
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
 " Ctags
 function! UpdateTags()
@@ -169,11 +155,11 @@ nnoremap <F4> :call UpdateCscope()<CR><CR>
 
 " Add any cscope database in current directory
 if filereadable("cscope.out")
-    cscope add cscope.out  
+    cscope add cscope.out
 endif
 
 " Show msg when any other cscope db added
-set cscopeverbose  
+set cscopeverbose
 
 "   's'   symbol: find all references to the C symbol under cursor
 "   'g'   global: find global definition(s) of the token under cursor
@@ -190,5 +176,5 @@ nnoremap <C-\>c :scscope find c <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-\>d :scscope find d <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-\>t :scscope find t <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-\>e :scscope find e <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-\>f :scscope find f <C-R>=expand("<cfile>")<CR><CR>	
-nnoremap <C-\>i :scscope find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
+nnoremap <C-\>f :scscope find f <C-R>=expand("<cfile>")<CR><CR>
+nnoremap <C-\>i :scscope find i ^<C-R>=expand("<cfile>")<CR>$<CR>

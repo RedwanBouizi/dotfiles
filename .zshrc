@@ -18,7 +18,7 @@ export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 
 export ZSH_THEME='tjkirch'
-zstyle ':completion:*' list-colors'' 
+zstyle ':completion:*' list-colors''
 export TERM='xterm-256color'
 export LANG=en_US.UTF-8
 
@@ -35,7 +35,7 @@ alias clearCache="rm -rf $HOME/.cache/*"
 
 alias edzsh="vim $HOME/.zshrc; source $HOME/.zshrc"
 alias edtm="vim $HOME/.tmux.conf; tmux source-file $HOME/.tmux.conf"
-alias vimrc="vim $HOME/.vimrc"
+alias edvim="vim $HOME/.vimrc"
 
 alias cmake_debug="cmake -DCMAKE_BUILD_TYPE=Debug ../.."
 alias cmake_release="cmake -DCMAKE_BUILD_TYPE=Release ../.."
@@ -43,7 +43,7 @@ alias cmake_release="cmake -DCMAKE_BUILD_TYPE=Release ../.."
 alias grc="cd $HOME/repo/RC"
 
 if [[ -z "$TMUX" ]]
-then	
+then
 	ID="`tmux ls | grep -vm1 attached | cut -d: -f1`"
 	if [[ -z "$ID" ]]
 	then
