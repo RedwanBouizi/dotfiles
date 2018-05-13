@@ -1,4 +1,3 @@
-# paths
 export HOME=/Users/redwan
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 export SHELL=$(which zsh)
@@ -6,26 +5,26 @@ export ZSH=$HOME/.oh-my-zsh
 
 export CC=/usr/local/bin/gcc
 export CXX=/usr/local/bin/gcc
-
 export CPATH=/usr/local/include
 export LIBRARY_PATH=/usr/local/lib
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
 
-# default editor
+export DATAPATH=$HOME/research.db
+export PARAMS_CFG_PATH=$HOME/repo/RC/cfg/params_config.txt
+export DATA_CFG_PATH=$HOME/repo/RC/cfg/data_config.txt
+
 export EDITOR="vim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 
-# theme and style
 export ZSH_THEME='tjkirch'
 zstyle ':completion:*' list-colors'' 
 export TERM='xterm-256color'
 export LANG=en_US.UTF-8
 
-# plugins 
 plugins=(history history-substring-search git brew osx zsh-syntax-highlighting colored-man-pages)
 source $ZSH/oh-my-zsh.sh
 
-# aliases
 alias ll="ls -lArth"
 export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 
@@ -34,21 +33,15 @@ alias ...="cd ../../"
 alias clearDS="sudo find . -type f -name '*.DS_Store' -ls -delete"
 alias clearCache="rm -rf $HOME/.cache/*"
 
-# zsh
-alias zshrc="vim $HOME/.zshrc"
-alias zshup="source $HOME/.zshrc"
-
-# vim
+alias edzsh="vim $HOME/.zshrc; source $HOME/.zshrc"
+alias edtm="vim $HOME/.tmux.conf; tmux source-file $HOME/.tmux.conf"
 alias vimrc="vim $HOME/.vimrc"
 
-# tmux
-alias tmrc="vim $HOME/.tmux.conf"
-alias tmup="tmux source-file $HOME/.tmux.conf"
+alias cmake_debug="cmake -DCMAKE_BUILD_TYPE=Debug ../.."
+alias cmake_release="cmake -DCMAKE_BUILD_TYPE=Release ../.."
 
-# library tags
-alias make_cpp_tags="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ."
+alias grc="cd $HOME/repo/RC"
 
-# autostart a tmux session if does not exist
 if [[ -z "$TMUX" ]]
 then	
 	ID="`tmux ls | grep -vm1 attached | cut -d: -f1`"
@@ -60,7 +53,6 @@ then
 	fi
 fi
 
-# pip zsh completion
 function _pip_completion {
   local words cword
   read -Ac words

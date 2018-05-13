@@ -26,7 +26,6 @@ set hidden
 
 " Display metrics
 set ruler
-set tw=80
 set colorcolumn=80
 set cursorline
 
@@ -46,6 +45,9 @@ set expandtab
 set autoindent
 set smartindent
 set fileformat=unix
+
+" Enhanced substitution
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " Historic
 set history=1000
@@ -125,11 +127,11 @@ let g:syntastic_quiet_messages={'level': 'warnings'}
 let g:syntastic_mode_map={'mode': 'passive'}
 let g:syntastic_cpp_checkers=['gcc']
 let g:syntastic_cpp_compiler='gcc'
-let g:syntastic_cpp_compiler_options='-std=c++14'
+let g:syntastic_cpp_compiler_options='-std=c++11'
 
 " NERDTree
 nnoremap <F1> :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.pyc$', '\~$', 'tags', '\.out$']
+let NERDTreeIgnore=['\.pyc$', 'tags', 'cscope.out', '__pycache__']
 let g:NERDTreeWinSize=30
 
 " Tagbar

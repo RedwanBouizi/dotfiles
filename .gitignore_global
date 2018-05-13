@@ -28,6 +28,7 @@ build/
 *.log
 *.sql
 *.sqlite
+*.db
 cscope.out
 tags
 
@@ -40,3 +41,10 @@ tags
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Swap #
+########
+*.swp
+
+
+.ipynb*
