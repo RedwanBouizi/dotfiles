@@ -103,9 +103,6 @@ let g:python_highlight_all=1
 
 " C++ syntax highlighting
 let g:cpp_member_variable_highlight=1
-let g:cpp_class_scope_highlight=1
-let g:cpp_class_decl_highlight=1
-let g:cpp_experimental_template_highlight=1
 
 " TmuxLine
 let g:tmuxline_powerline_separators=0
@@ -149,12 +146,10 @@ function! UpdateCscope()
 endfunction
 nnoremap <F4> :call UpdateCscope()<CR><CR>
 
-" Add any cscope database in current directory
 if filereadable("cscope.out")
     cscope add cscope.out
 endif
 
-" Show msg when any other cscope db added
 set cscopeverbose
 
 "   's'   symbol: find all references to the C symbol under cursor

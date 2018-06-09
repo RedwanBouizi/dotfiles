@@ -22,6 +22,7 @@ build/
 *.rar
 *.tar
 *.zip
+venv/
 
 # Logs, tags and databases #
 ######################
@@ -45,6 +46,3 @@ Thumbs.db
 # Swap #
 ########
 *.swp
-
-
-.ipynb*

@@ -1,7 +1,11 @@
 export HOME=/Users/redwan
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+export PATH=$PATH:/Users/redwan/Library/Python/3.6/bin
 export SHELL=$(which zsh)
 export ZSH=$HOME/.oh-my-zsh
+
+export WORKON_HOME=~/envs
+source /usr/local/bin/virtualenvwrapper.sh
 
 export CC=/usr/local/bin/gcc
 export CXX=/usr/local/bin/gcc
@@ -10,8 +14,9 @@ export LIBRARY_PATH=/usr/local/lib
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
 
 export DATAPATH=$HOME/research.db
-export PARAMS_CFG_PATH=$HOME/repo/RC/cfg/params_config.txt
-export DATA_CFG_PATH=$HOME/repo/RC/cfg/data_config.txt
+export DATA_CFG=$HOME/repo/RC/cfg/data.cfg
+export PARAMS_CFG=$HOME/repo/RC/cfg/params.cfg
+export PSO_CFG=$HOME/repo/RC/cfg/pso.cfg
 
 export EDITOR="vim"
 export USE_EDITOR=$EDITOR
