@@ -12,8 +12,6 @@ build/
 
 # Packages #
 ############
-# it's better to unpack these files and commit the raw source
-# git has its own built in compression methods
 *.7z
 *.dmg
 *.gz
@@ -25,23 +23,14 @@ build/
 venv/
 
 # Logs, tags and databases #
-######################
+############################
 *.log
 *.sql
 *.sqlite
 *.db
 cscope.out
 tags
-
-# OS generated files #
-######################
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+.ipynb_checkpoints/
 
 # Swap #
 ########
