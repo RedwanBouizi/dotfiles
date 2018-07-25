@@ -13,9 +13,9 @@ set ruler
 set colorcolumn=80
 set cursorline
 
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set ts=4
+set sw=4
+set sts=4
 set expandtab
 set autoindent
 set smartindent
@@ -63,22 +63,17 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 filetype plugin indent on
 
-" Vim better whitespace
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
 
-" Python syntax highlighting
 let g:python_highlight_all=1
 
-" C++ syntax highlighting
 let g:cpp_member_variable_highlight=1
 
-" Airline
 let g:airline_theme="dark"
 let g:airline_regular_fonts=1
 let g:airline#extensions#tabline#enabled=1
 
-" Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -91,7 +86,6 @@ let g:syntastic_cpp_checkers=['gcc']
 let g:syntastic_cpp_compiler='gcc'
 let g:syntastic_cpp_compiler_options='-std=c++11'
 
-" NERDTree
 nnoremap <F1> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '__pycache__']
 let g:NERDTreeWinSize=30
