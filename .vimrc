@@ -10,7 +10,6 @@ set wildmenu
 set showcmd
 
 set ruler
-set colorcolumn=80
 set cursorline
 
 set ts=4
@@ -32,7 +31,7 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 syntax on
 set background=dark
-colorscheme solarized
+colorscheme PaperColor
 
 set foldmethod=indent
 set foldlevel=99
@@ -43,6 +42,9 @@ nnoremap <C-x> :tabclose<CR>
 nnoremap <C-m> :tabnext<CR>
 nnoremap <C-n> :tabprevious<CR>
 
+nnoremap k gk
+nnoremap j gj
+
 set splitbelow
 set splitright
 
@@ -52,9 +54,10 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 call plug#begin('~/.vim/plugged')
-    Plug 'ntpeters/vim-better-whitespace'
+    Plug 'NLKNguyen/papercolor-theme'
     Plug 'vim-python/python-syntax'
     Plug 'octol/vim-cpp-enhanced-highlight'
+    Plug 'ntpeters/vim-better-whitespace'
     Plug 'bling/vim-airline'
     Plug 'scrooloose/syntastic'
     Plug 'scrooloose/nerdtree'
@@ -63,12 +66,10 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 filetype plugin indent on
 
+let g:python_highlight_all=1
+let g:cpp_member_variable_highlight=1
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
-
-let g:python_highlight_all=1
-
-let g:cpp_member_variable_highlight=1
 
 let g:airline_theme="dark"
 let g:airline_regular_fonts=1

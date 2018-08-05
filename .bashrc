@@ -9,11 +9,13 @@ configure_basis()
     export EDITOR='vim'
     export USE_EDITOR=$EDITOR
     export VISUAL=$EDITOR
+
     export TERM='xterm-256color'
-    export PS1='\e[0;34m\u@\h\e[m \w \e[0;31m\$\e[m '
+    export PS1='\u@\h \w \e[0;31m\$\e[m '
 
     alias ..='cd ../'
-    alias ll='ls --color=auto -lArth'
+    alias ls='ls --color=auto'
+    alias ll='ls -lArth'
     alias grep='grep --color=auto'
     alias envg='env | grep'
 
