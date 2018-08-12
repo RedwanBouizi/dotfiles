@@ -30,8 +30,8 @@ map <leader>h :set hlsearch!<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 syntax on
-set background=dark
-colorscheme PaperColor
+set background=light
+colorscheme solarized
 
 set foldmethod=indent
 set foldlevel=99
@@ -54,11 +54,12 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 call plug#begin('~/.vim/plugged')
-    Plug 'NLKNguyen/papercolor-theme'
+    Plug 'altercation/vim-colors-solarized'
     Plug 'vim-python/python-syntax'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'ntpeters/vim-better-whitespace'
-    Plug 'bling/vim-airline'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
     Plug 'scrooloose/syntastic'
     Plug 'scrooloose/nerdtree'
     Plug 'ddollar/nerdcommenter'
@@ -71,8 +72,9 @@ let g:cpp_member_variable_highlight=1
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
 
-let g:airline_theme="dark"
-let g:airline_regular_fonts=1
+let g:airline_theme='solarized'
+let g:airline_solarized_bg='light'
+let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 
 set statusline+=%#warningmsg#
@@ -85,7 +87,7 @@ let g:syntastic_quiet_messages={'level': 'warnings'}
 let g:syntastic_mode_map={'mode': 'passive'}
 let g:syntastic_cpp_checkers=['gcc']
 let g:syntastic_cpp_compiler='gcc'
-let g:syntastic_cpp_compiler_options='-std=c++11'
+let g:syntastic_cpp_compiler_options='-std=c++14'
 
 nnoremap <F1> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '__pycache__']
