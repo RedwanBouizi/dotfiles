@@ -29,10 +29,6 @@ set smartcase
 map <leader>h :set hlsearch!<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
-syntax on
-set background=light
-colorscheme solarized
-
 set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
@@ -67,13 +63,17 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 filetype plugin indent on
 
+syntax on
+set background=dark
+colorscheme solarized
+
 let g:python_highlight_all=1
 let g:cpp_member_variable_highlight=1
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
 
 let g:airline_theme='solarized'
-let g:airline_solarized_bg='light'
+let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 
